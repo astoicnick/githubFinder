@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    // Renders the component without a parent div element
+    // <React.Fragment>
+    //     <h1>Welcome to New Yoik</h1>
+    // </React.Fragment>
+
+    // How to render an elemnt via React.createElement
+    //     return React.createElement(
+    //     'div',
+    // { className: 'App' },
+    // React.createElement('h1', null, 'Hello from New Yoik') )
+
+
+    render() {
+        const name = 'John Doe';
+        const loading = true;
+
+        return (
+            <div className='App'>
+                <h1>Hello there, {name} </h1>
+            </div>
+        )
+    }
 }
 
 export default App;
