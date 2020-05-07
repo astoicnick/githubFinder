@@ -1,26 +1,29 @@
 import React, {Component} from 'react';
 import './App.css';
+import Navbar from "./components/layout/Navbar";
+import UserItem from "./components/users/UserItem";
+import Users from "./components/users/Users";
+import axios from 'axios';
 
 class App extends Component {
-    // Renders the component without a parent div element
-    // <React.Fragment>
-    //     <h1>Welcome to New Yoik</h1>
-    // </React.Fragment>
+    state = {
+        users: [],
+        loading: false
+    };
 
-    // How to render an elemnt via React.createElement
-    //     return React.createElement(
-    //     'div',
-    // { className: 'App' },
-    // React.createElement('h1', null, 'Hello from New Yoik') )
+    async componentDidMount() {
+        this.setState({loading: true });
+    const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID }&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
 
+    this.setState({users: res.data, loading: false });
+    }
 
     render() {
         const name = 'John Doe';
-        const loading = true;
-
+        // const loading = true;
         return (
             <div className='App'>
-                <h1>Hello there, {name} </h1>
+                <Users/>
             </div>
         )
     }
